@@ -1,3 +1,5 @@
+![banner](https://github.com/user-attachments/assets/e349a27e-a23b-4ae7-b42d-2988559d70da)
+
 # Large Language Model and Provenance Metadata for Determining Image and Video Relevance in News Stories
 
 #### [Tomas Peterka]() and [Matyas Bohacek](https://www.matyasbohacek.com)
