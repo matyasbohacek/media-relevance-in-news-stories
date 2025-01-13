@@ -35,6 +35,14 @@ def clean_llm_json(llm_response):
 
 
 def pil_image_to_binary(pil_image, format="JPEG"):
+    """
+    TODO Tom
+
+    :param pil_image:
+    :param format:
+    :return:
+    """
+
     byte_array = io.BytesIO()
     pil_image.save(byte_array, format=format)
     byte_data = byte_array.getvalue()
@@ -43,6 +51,13 @@ def pil_image_to_binary(pil_image, format="JPEG"):
 
 
 def load_image_multi_source(image_path):
+    """
+    TODO Tom
+
+    :param image_path:
+    :return:
+    """
+
     if image_path.startswith(("http://", "https://")):
         response = requests.get(image_path, stream=True)
         response.raise_for_status()
