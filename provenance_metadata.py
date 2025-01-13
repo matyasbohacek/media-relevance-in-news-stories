@@ -43,6 +43,13 @@ def extract_conventional_metadata(file_path: str) -> (dict, dict):
 
 
 def parse_content_credentials(item):
+    """
+    TODO MB
+
+    :param item:
+    :return:
+    """
+
     entry = []
     if 'title' in item:
         entry.append(f"Title: {item['title']}")
