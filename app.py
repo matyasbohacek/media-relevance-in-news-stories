@@ -164,7 +164,7 @@ with gr.Blocks(theme=theme, css=CSS) as demo:
         outputs=[full_input_col, simplified_input_col]
     )
 
-    # fix naming
+    # todo fix naming
     def main_wrapper(a, b, c, d, e, f, g):
         CURRENT_REASONING, result = main(a, b, c, d, e, f, g)
         return result, gr.update(visible=True)
