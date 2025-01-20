@@ -36,11 +36,11 @@ def clean_llm_json(llm_response):
 
 def pil_image_to_binary(pil_image, format="JPEG"):
     """
-    TODO Tom
+    Converts PIL image in any format to binary data (as bytes). It returns binary data.
 
-    :param pil_image:
-    :param format:
-    :return:
+    :param pil_image: Loaded image
+    :param format: The format to save the image in (by default 'JPEG'). Common formats include 'PNG', 'JPEG', 'BMP', etc.
+    :return: Binary data of the image in the specified format
     """
 
     byte_array = io.BytesIO()
@@ -52,10 +52,11 @@ def pil_image_to_binary(pil_image, format="JPEG"):
 
 def load_image_multi_source(image_path):
     """
-    TODO Tom
+    Loads an image from a given path, whether it's from a URL, a local file, or a video. 
+    If the path points to a video file, it will extract the first frame as an image.
 
-    :param image_path:
-    :return:
+    :param image_path: URL or a local file path
+    :return: raw image
     """
 
     if image_path.startswith(("http://", "https://")):
