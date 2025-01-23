@@ -1,4 +1,5 @@
-<img width="1107" alt="banner" src="https://github.com/user-attachments/assets/9d2d2b68-8a82-4c4b-83a0-1d2d0fd37554" />
+<img width="1723" alt="banner-2" src="https://github.com/user-attachments/assets/9e79686e-e96e-4257-a449-611c236b0b96" />
+
 
 # Large Language Model and Provenance Metadata for Determining Image and Video Relevance in News Stories
 
