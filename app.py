@@ -3,10 +3,9 @@ import ast
 import gradio as gr
 
 from constants import EX_0, EX_1, CSS
-from llm_inference import perform_llm_inference
+from llm_inference import perform_llm_article_analysis, perform_llm_inference_chat_followup
 from utils import clean_llm_json, pil_image_to_binary, load_image_multi_source
 from provenance_metadata import extract_and_preprocess_c2pa
-
 
 
 current_reasoning = ""
@@ -48,32 +47,20 @@ def generate_html_analysis(overall_assessment, check_one, reasoning_one, check_t
     return x, html_output
 
 
-def handle_chat(history, message):
+def handle_chat(history, current_reasoning, message):
+    """
+
+    :param history:
+    :param current_reasoning:
+    :param message:
+    :return:
+    """
+
     if message.strip() == "":
         return history
 
-    # todo: unify to call llm_inference
-    client = InferenceClient(
-        "microsoft/Phi-3-mini-4k-instruct",
-        token="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",
-    )
-
-    print(f"Here is your current reasoning: {current_reasoning} Now answer this question: {message}")
-
-    response = ""
-    try:
-        for message_chunk in client.chat_completion(
-                messages=[{"role": "user", "content": f"Here is your current reasoning: {current_reasoning} Generate a verbose response about the importance of provenance metadata that appears to be responding to the following question posted on an ethical AI forum: {message}"}],
-                max_tokens=500,
-                stream=True,
-        ):
-            if message_chunk.choices and message_chunk.choices[0].delta.content is not None:
-                response += message_chunk.choices[0].delta.content
-
-        history = history + [(message, "Thank you for asking! " + response)]
-    except ValueError as e:
-        print(f"Error processing message: {e}")
-        history = history + [(message, "An error occurred while processing your request.")]
+    response = perform_llm_inference_chat_followup(current_reasoning, message)
+    history = history + [(message, "Thank you for asking! " + response)]
 
     return history
 
@@ -93,7 +80,7 @@ def main(title, body, img_url, img_file, img_caption, simplified_input, input_mo
 
     else:
         metadata = extract_and_preprocess_c2pa(image_used)
-        response = perform_llm_inference(title, body, img_caption, metadata)
+        response = perform_llm_article_analysis(title, body, img_caption, metadata)
         response_structured = ast.literal_eval(clean_llm_json(response))
         return generate_html_analysis(response_structured["3-assessment"], response_structured["1-relevant"], response_structured["1-reason"], response_structured["2-relevant"], response_structured["2-reason"])
 
@@ -174,7 +161,7 @@ with gr.Blocks(theme=theme, css=CSS) as demo:
 
     chat_submit.click(
         handle_chat,
-        inputs=[chatbot, chat_input],
+        inputs=[chatbot, current_reasoning, chat_input],
         outputs=[chatbot]
     )
 

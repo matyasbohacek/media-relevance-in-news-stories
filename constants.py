@@ -160,7 +160,7 @@ button, input, textarea, select {
 }
 """
 
-LLM_PROMPT = (
+LLM_PROMPT_ANALYSIS = (
     "You are evaluating the relevance and credibility of images and videos attached to news stories.\n"
     "Below, you will be presented with:\n"
     "- The title of the article\n"
@@ -179,3 +179,5 @@ LLM_PROMPT = (
     "Return your answer as a json/dictionary with the format: {'1-relevant': True/False, '1-reason': str, '2-relevant': True/False, '2-reason': str, '3-assessment': 'RELEVANT' / 'NOT RELEVANT'}\n"
     "No other text or commentary beyond the raw json, return raw json/dictionary. For strings, use double colon \" instead of single colon '."
 )
+
+LLM_PROMPT_FOLLOWUP_CHAT = "Here is your current reasoning: $CURRENT_REASONING$ Generate a verbose response about the importance of provenance metadata that appears to be responding to the following question: $MESSAGE$"
