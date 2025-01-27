@@ -2,7 +2,7 @@
 import ast
 import gradio as gr
 
-from constants import EX_0, EX_1, CSS
+from constants import EX_0, EX_1, CSS, OVERALL_ASSESSMENT_HTML_OUTPUT, OVERALL_ASSESSMENT_OUTPUT
 from llm_inference import perform_llm_article_analysis, perform_llm_inference_chat_followup
 from utils import clean_llm_json, pil_image_to_binary, load_image_multi_source
 from provenance_metadata import extract_and_preprocess_c2pa
@@ -22,38 +22,31 @@ def generate_html_analysis(overall_assessment, check_one, reasoning_one, check_t
 
     reasoning_two = "There appears to be no tampering with this artifact, verified by the provenance metadata."
 
-    # todo move to constants
-    html_output = f"""
-    <div class="container-spec">
-        <div id="overallAssessment" class="assessment {assessment_class}">
-            <div style='color: #fff !important;'>{overall_assessment}</div><div class="check-mark"  style='color: #fff !important;'>{symbol}</div>
-        </div>
-        <div class="reasoning">
-            <strong>Location and Source:</strong> <span>{"LOOKS GOOD " if check_one else "MIGHT BE PROBLEMATIC "} <br><br> {reasoning_one}</span>
-        </div>
-        <div class="reasoning">
-            <strong>Tampering:</strong> <span>{"LOOKS GOOD " if check_two else "MIGHT BE PROBLEMATIC "} <br><br> {reasoning_two}</span>
-        </div>
-    </div>
-    """
+    html_output = OVERALL_ASSESSMENT_HTML_OUTPUT \
+        .replace("$assessment_class$", overall_assessment) \
+        .replace("$symbol$", symbol) \
+        .replace("$check_one$", check_one) \
+        .replace("$reasoning_one$", reasoning_one) \
+        .replace("$check_two$", check_two) \
+        .replace("$reasoning_two$", reasoning_two)
 
-    # todo move to constants
-    x = f"""
-    Overall Assessment: {overall_assessment}
-    Location and Source: {"LOOKS GOOD " if check_one else "MIGHT BE PROBLEMATIC "} {reasoning_one}
-    Tampering: {"LOOKS GOOD " if check_two else "MIGHT BE PROBLEMATIC "} {reasoning_two}
-    """
-
-    return x, html_output
+    plain_text_output = OVERALL_ASSESSMENT_OUTPUT \
+        .replace("$assessment_class$", overall_assessment) \
+        .replace("$check_one$", check_one) \
+        .replace("$reasoning_one$", reasoning_one) \
+        .replace("$check_two$", check_two) \
+        .replace("$reasoning_two$", reasoning_two)
+    
+    return plain_text_output, html_output
 
 
 def handle_chat(history, current_reasoning, message):
     """
-
-    :param history:
-    :param current_reasoning:
-    :param message:
-    :return:
+    Handles a chat session by updating the conversation history with the user's message and generating a response using the current reasoning context.
+    :param history: Conversation history
+    :param current_reasoning: String that provides additional context or reasoning to the model during inference
+    :param message: String, the user's latest input message
+    :return: Updated history with the bot's response to the user's message
     """
 
     if message.strip() == "":
@@ -151,9 +144,9 @@ with gr.Blocks(theme=theme, css=CSS) as demo:
         outputs=[full_input_col, simplified_input_col]
     )
 
-    # todo fix naming
-    def main_wrapper(a, b, c, d, e, f, g):
-        CURRENT_REASONING, result = main(a, b, c, d, e, f, g)
+
+    def main_wrapper(article_title, article_body, image_url, image_file, image_caption, simplified_input, input_mode):
+        CURRENT_REASONING, result = main(article_title, article_body, image_url, image_file, image_caption, simplified_input, input_mode)
         return result, gr.update(visible=True)
 
     submit.click(main_wrapper, inputs=[input1, input2, input3, input4, input5, simplified_input, input_mode],
