@@ -181,3 +181,23 @@ LLM_PROMPT_ANALYSIS = (
 )
 
 LLM_PROMPT_FOLLOWUP_CHAT = "Here is your current reasoning: $CURRENT_REASONING$ Generate a verbose response about the importance of provenance metadata that appears to be responding to the following question: $MESSAGE$"
+
+OVERALL_ASSESSMENT_HTML_OUTPUT = """
+    <div class="container-spec">
+        <div id="overallAssessment" class="assessment $assessment_class$">
+            <div style='color: #fff !important;'>$overall_assessment$</div><div class="check-mark"  style='color: #fff !important;'>$symbol$</div>
+        </div>
+        <div class="reasoning">
+            <strong>Location and Source:</strong> <span>{"LOOKS GOOD " if $check_one$ else "MIGHT BE PROBLEMATIC "} <br><br> $reasoning_one$</span>
+        </div>
+        <div class="reasoning">
+            <strong>Tampering:</strong> <span>{"LOOKS GOOD " if $check_two$ else "MIGHT BE PROBLEMATIC "} <br><br> $reasoning_two$</span>
+        </div>
+    </div>
+"""
+
+OVERALL_ASSESSMENT_OUTPUT = """
+    Overall Assessment: $overall_assessment$
+    Location and Source: {"LOOKS GOOD " if $check_one$ else "MIGHT BE PROBLEMATIC "} $reasoning_one$
+    Tampering: {"LOOKS GOOD " if $check_two$ else "MIGHT BE PROBLEMATIC "} $reasoning_two$
+    """
