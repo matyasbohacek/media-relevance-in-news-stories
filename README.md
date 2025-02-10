@@ -31,7 +31,7 @@ conda create -n news-article-media-provenance python=3.9
 pip install -r requirements.txt
 ```
 
-4. Start the interactive web app:
+4. Start the interactive web interface:
 
 ```shell
 python -m app
