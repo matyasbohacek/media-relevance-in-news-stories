@@ -12,7 +12,30 @@ The most effective misinformation campaigns are multimodal, often combining text
 
 ## Getting Started
 
-TBD
+
+1. Clone this repo:
+
+```shell
+git clone https://github.com/matyasbohacek/news-article-media-provenance.git
+```
+
+2. In the `news-article-media-provenance` directory, set up a Python environment (Python 3.9 is recommended); you can create the environment from scratch or using:
+
+```shell
+conda create -n news-article-media-provenance python=3.9
+```
+
+3. Install required Python dependencies using:
+
+```shell
+pip install -r requirements.txt
+```
+
+4. Start the interactive web app:
+
+```shell
+python -m app
+```
 
 ## Features
 
