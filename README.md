@@ -1,6 +1,6 @@
 <img width="1727" alt="banner-captioned" src="https://github.com/user-attachments/assets/b6d604c8-ba43-44d9-bb59-49f9a8376415" />
 
-# Large Language Model and Provenance Metadata for Determining Image and Video Relevance in News Stories
+# Large Language Models and Provenance Metadata for Determining Image and Video Relevance in News Stories
 
 #### [Tomas Peterka]() and [Matyas Bohacek](https://www.matyasbohacek.com)
 
