@@ -39,11 +39,11 @@ python -m app
 
 ## Features
 
-**C2PA Provenance Extraction.** TBD
+**C2PA Provenance Extraction.** Extracts C2PA metadata from images and videos, converting it into an LLM-readable format. This functionality is implemented in `provenance_metadata.py`.
 
-**LLM Inference.** TBD
+**LLM Inference.**  Provides Hugging Face-powered LLM inference, located in `llm_inference.py`. By default, the prototype uses a model from the Phi-3 family, but any LLM can be used by specifying the starting weights.
 
-**Demo.** TBD
+**Web Interface.** Wrapping all functionality of this prototype into an easy-to-use GUI, the `app.py` script contains the implementation of a Gradio web interface.
 
 ## Citation
 
