@@ -180,7 +180,7 @@ LLM_PROMPT_ANALYSIS = (
     "No other text or commentary beyond the raw json, return raw json/dictionary. For strings, use double colon \" instead of single colon '."
 )
 
-LLM_PROMPT_FOLLOWUP_CHAT = "Here is your current reasoning: $CURRENT_REASONING$ Generate a verbose response about the importance of provenance metadata that appears to be responding to the following question: $MESSAGE$"
+LLM_PROMPT_FOLLOWUP_CHAT = "Here is your current reasoning: $CURRENT_REASONING$. Generate a verbose response to the following question, highlighting the importance of provenance metadata: $MESSAGE$"
 
 OVERALL_ASSESSMENT_HTML_OUTPUT = """
     <div class="container-spec">
