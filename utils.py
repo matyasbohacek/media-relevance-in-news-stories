@@ -82,3 +82,7 @@ def load_image_multi_source(image_path):
         raise ValueError("The provided path is neither a valid URL, a local file path, nor a video file.")
 
     return raw_image
+
+
+if __name__ == "__main__":
+    pass

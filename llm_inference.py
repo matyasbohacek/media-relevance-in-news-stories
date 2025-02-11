@@ -49,7 +49,7 @@ def __perform_llm_inference(prompt, llm_hf_id="microsoft/Phi-3-mini-4k-instruct"
 
     client = InferenceClient(
         llm_hf_id,
-        token="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",
+        token="",
     )
 
     response = ""

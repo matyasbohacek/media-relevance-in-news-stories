@@ -13,7 +13,6 @@ def extract_c2pa_metadata(file_path: str) -> dict:
     :return: A dictionary containing the metadata
     """
 
-##########################################################
     os.environ["PATH"] = "/Users/matyasbohacek/.cargo/bin" + os.pathsep + os.environ["PATH"]
 
     c2pa_metadata = subprocess.run("c2patool \"" + file_path + "\"", stdout=subprocess.PIPE,
@@ -80,9 +79,8 @@ def parse_content_credentials(item):
                 if 'Iptc4xmpExt:LocationCreated' in metadata:
                     location = metadata['Iptc4xmpExt:LocationCreated']
                     if 'Iptc4xmpExt:Latitude' in location and 'Iptc4xmpExt:Longitude' in location:
-                        entry.append(f"Verified Location: Latitude {location['Iptc4xmpExt:Latitude']}, Longitude {location['Iptc4xmpExt:Longitude']}")
-                #if 'dc:description' in metadata:
-                #    entry.append(f"Description: {metadata['dc:description']}")
+                        entry.append(f"Verified Location: Latitude {location['Iptc4xmpExt:Latitude']}, "
+                                     f"Longitude {location['Iptc4xmpExt:Longitude']}")
                 if 'photoshop:DateCreated' in metadata:
                     entry.append(f"Date Created: {metadata['photoshop:DateCreated']}")
                 if 'photoshop:Source' in metadata:
@@ -95,11 +93,11 @@ def extract_and_preprocess_c2pa(item):
     """
     Extracts and preprocesses C2PA metadata from a given file path.
 
-    This function first extracts raw C2PA metadata using the `extract_c2pa_metadata` function and then processes the metadata into a human-readable format using `parse_content_credentials`.
+    This function first extracts raw C2PA metadata using the `extract_c2pa_metadata` function and then processes the
+    metadata into a human-readable format using `parse_content_credentials`.
 
     :param item: The path to the image from which C2PA metadata is to be extracted.
     :return: A formatted string containing the processed content credentials.
     """
     md_c2pa = extract_c2pa_metadata(item)
     return parse_content_credentials(md_c2pa)
-    # md_exif_spec, md_exif_gen = extract_conventional_metadata(item)
