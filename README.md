@@ -16,18 +16,19 @@ The most effective misinformation campaigns are multimodal, often combining text
 1. Clone this repo:
 
 ```shell
-git clone https://github.com/matyasbohacek/news-article-media-provenance.git
+git clone https://github.com/matyasbohacek/media-relevance-in-news-stories.git
 ```
 
-2. In the `news-article-media-provenance` directory, set up a Python environment (Python 3.9 is recommended); you can create the environment from scratch or using:
+2. In the `media-relevance-in-news-stories` directory, set up a Python environment (Python 3.9 is recommended); you can create the environment from scratch or using:
 
 ```shell
-conda create -n news-article-media-provenance python=3.9
+conda create -n media-relevance-in-news-stories python=3.9
 ```
 
 3. Install required Python dependencies using:
 
 ```shell
+conda activate media-relevance-in-news-stories
 pip install -r requirements.txt
 ```
 
