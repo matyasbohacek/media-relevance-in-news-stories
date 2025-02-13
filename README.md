@@ -19,7 +19,7 @@ The most effective misinformation campaigns are multimodal, often combining text
 git clone https://github.com/matyasbohacek/media-relevance-in-news-stories.git
 ```
 
-2. In the `media-relevance-in-news-stories` directory, set up a Python environment (Python 3.9 is recommended); you can create the environment from scratch or using:
+2. In the `media-relevance-in-news-stories` directory, set up a Python environment (Python 3.9 is recommended):
 
 ```shell
 conda create -n media-relevance-in-news-stories python=3.9
