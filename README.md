@@ -2,7 +2,7 @@
 
 # Large Language Models and Provenance Metadata for Determining the Relevance of Images and Videos in News Stories
 
-#### [Tomas Peterka]() and [Matyas Bohacek](https://www.matyasbohacek.com)
+#### [Tomas Peterka](https://scholar.google.com/citations?user=YA3bsiIAAAAJ&hl=en&oi=sra) and [Matyas Bohacek](https://www.matyasbohacek.com)
 
 The most effective misinformation campaigns are multimodal, often combining text with images and videos taken out of context—or fabricating them entirely—to support a given narrative. Contemporary methods for detecting misinformation, whether in deepfakes or text articles, often miss the interplay between multiple modalities. Built around a large language model, the system proposed in this paper addresses these challenges. It analyzes both the article's text and the provenance metadata of included images and videos to determine whether they are relevant. We open-source the system prototype and interactive web interface.
 
@@ -49,9 +49,14 @@ python -m app
 ## Citation
 
 ```bibtex
-TBD
+@article{peterka2025large,
+  title={Large Language Models and Provenance Metadata for Determining the Relevance of Images and Videos in News Stories},
+  author={Peterka, Tomas and Bohacek, Matyas},
+  journal={arXiv preprint arXiv:2502.09689},
+  year={2025}
+}
 ```
 
 ## Remarks & Updates
 
-- (**TBD Date**) The pre-print is released on arXiv.
+- (**February 13, 2025**) The pre-print is released on arXiv.
